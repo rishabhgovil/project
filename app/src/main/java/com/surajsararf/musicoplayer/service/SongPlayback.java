@@ -27,9 +27,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RemoteViews;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 import com.surajsararf.musicoplayer.Custom.MediaStoreAccessHelper;
+import com.surajsararf.musicoplayer.FloatingViewService;
 import com.surajsararf.musicoplayer.MainActivity;
 import com.surajsararf.musicoplayer.R;
 import com.surajsararf.musicoplayer.receiver.NotificationBroadcast;
@@ -1361,10 +1363,10 @@ public class SongPlayback extends Service {
         NotificationManager notificationManager = (NotificationManager) this.getSystemService(NOTIFICATION_SERVICE);
         notificationManager.cancel(mNotificationId);
 
-        if (mMediaPlayer!=null)
+        if (mMediaPlayer != null)
             mMediaPlayer.release();
 
-        if (mMediaPlayer2!=null)
+        if (mMediaPlayer2 != null)
             getMediaPlayer2().release();
 
         mMediaPlayer = null;
@@ -1374,4 +1376,26 @@ public class SongPlayback extends Service {
         mAudioManager.abandonAudioFocus(audioFocusChangeListener);
         mAudioManager = null;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
