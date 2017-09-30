@@ -64,8 +64,8 @@ public class SongPlayback extends Service {
 
     private Context mContext;
     private Service mService;
-    private MediaPlayer mMediaPlayer;
-    private MediaPlayer mMediaPlayer2;
+    public static MediaPlayer mMediaPlayer;
+    public MediaPlayer mMediaPlayer2;
     public int mCurrentMediaPlayer = 1;
     private boolean mFirstRun = true;
     private AudioManager mAudioManager;

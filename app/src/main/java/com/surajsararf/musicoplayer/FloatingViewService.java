@@ -9,8 +9,11 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.surajsararf.musicoplayer.service.SongPlayback;
 
 public class FloatingViewService extends Service {
 
@@ -66,13 +69,32 @@ public class FloatingViewService extends Service {
 
         //Set the view while floating view is expanded.
         //Set the play button.
-        ImageView playButton = (ImageView) mFloatingView.findViewById(R.id.play_btn);
+        final ImageView playButton = (ImageView) mFloatingView.findViewById(R.id.play_btn);
+        final ImageView pauseButton = (ImageView) mFloatingView.findViewById(R.id.pause_btn);
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(FloatingViewService.this, "Playing the song.", Toast.LENGTH_LONG).show();
+                Toast.makeText(FloatingViewService.this, "Pausing the song.", Toast.LENGTH_LONG).show();
+                SongPlayback.mMediaPlayer.pause();
+                playButton.setImageResource(R.drawable.pausefloat);
+                playButton.setVisibility(View.GONE);
+                pauseButton.setVisibility(View.VISIBLE);
+
             }
         });
+
+        pauseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(FloatingViewService.this, "Playing the song.", Toast.LENGTH_LONG).show();
+                SongPlayback.mMediaPlayer.start();
+                pauseButton.setImageResource(R.drawable.play);
+                pauseButton.setVisibility(View.GONE);
+                playButton.setVisibility(View.VISIBLE);
+
+            }
+        });
+
 
         //Set the next button.
         ImageView nextButton = (ImageView) mFloatingView.findViewById(R.id.next_btn);
@@ -80,6 +102,7 @@ public class FloatingViewService extends Service {
             @Override
             public void onClick(View v) {
                 Toast.makeText(FloatingViewService.this, "Playing next song.", Toast.LENGTH_LONG).show();
+
             }
         });
 

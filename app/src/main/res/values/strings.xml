@@ -4,4 +4,13 @@
     <string name="pause">Pause</string>
     <string name="stop">Stop</string>
     <string name="b322_a00_u_iMP12">ca-app-pub-1334369529320919/9668459984</string>
+
+    <string name="enabled">Enabled</string>
+    <string name="flat">Flat</string>
+    <string name="bass_boost">Bass boost</string>
+    <string name="about">About...</string>
+    <string name="ok">OK</string>
+    <string name="copyright_message">Simple Equalizer v0.1a, Copyright \u00A92013 Kevin Boone. Feel free to distribute as you see fit.</string>
+
+
 </resources>

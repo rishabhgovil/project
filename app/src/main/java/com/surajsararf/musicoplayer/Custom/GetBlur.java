@@ -1,6 +1,6 @@
 package com.surajsararf.musicoplayer.Custom;
 
-import android.graphics.Bitmap;
+import  android.graphics.Bitmap;
 import android.util.Log;
 
 /**

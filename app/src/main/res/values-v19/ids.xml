@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="enabled">false</item>
+    <item type="id" name="flat">false</item>
+    <item type="id" name="bass_boost_label">false</item>
+    <item type="id" name="bass_boost">false</item>
+    <item type="id" name="slider_label_1">false</item>
+    <item type="id" name="slider_1">false</item>
+    <item type="id" name="slider_label_2">false</item>
+    <item type="id" name="slider_2">false</item>
+    <item type="id" name="slider_label_3">false</item>
+    <item type="id" name="slider_3">false</item>
+    <item type="id" name="slider_label_4">false</item>
+    <item type="id" name="slider_4">false</item>
+    <item type="id" name="slider_label_5">false</item>
+    <item type="id" name="slider_5">false</item>
+    <item type="id" name="slider_label_6">false</item>
+    <item type="id" name="slider_6">false</item>
+    <item type="id" name="slider_label_7">false</item>
+    <item type="id" name="slider_7">false</item>
+    <item type="id" name="slider_label_8">false</item>
+    <item type="id" name="slider_8">false</item>
+    <item type="id" name="about">false</item>
+</resources>

@@ -69,12 +69,22 @@
             <!--Play button-->
             <ImageView
                 android:id="@+id/play_btn"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"
                 android:src="@drawable/ic_play"
                 tools:ignore="ContentDescription"/>
+            <ImageView
+                android:id="@+id/pause_btn"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/pausefloat"
+                android:visibility="gone"
+                tools:ignore="ContentDescription"/>
+
 
             <!--Next button-->
             <ImageView

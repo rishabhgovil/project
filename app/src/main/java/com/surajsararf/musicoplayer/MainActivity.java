@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -24,6 +25,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -59,7 +61,6 @@ public class MainActivity extends AppCompatActivity{
 
     private static final int CODE_DRAW_OVER_OTHER_APP_PERMISSION = 2084;
 
-
     private final static int mMiniMusicplayerheight = 49;
     private final static int mAnimationDuration = 400;
     private final static float mSlideHeight = 150;
@@ -74,6 +75,7 @@ public class MainActivity extends AppCompatActivity{
 
     private AdView mAdView;
     FloatingActionButton image;
+    FloatingActionButton equal;
 
     private Boolean IsUp;
     private static RelativeLayout mBothmusicPlayer, mMusicPlayer, mMiniPrevious, mMiniNext, mRoot, mAlbumArt_Area,mPrevious,mNext,mRootofList,mContentArea;
@@ -103,6 +105,8 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        equal=(FloatingActionButton)findViewById(R.id.equal);
+
         // floating permission
         
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(this)) {
@@ -116,14 +120,27 @@ public class MainActivity extends AppCompatActivity{
         else {
             initializeView();
         }
-        
-        
+
+
+        // equalizer
+
+        equal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this,EqualizerActivity.class);
+                startActivity(i);
+            }
+        });
+
+
         mHandler=new Handler();
         mContext =this;
         activity=this;
         picasso =Picasso.with(mContext);
         BindingView();
         Setup();
+
+
     }
 
     // floating button
@@ -154,6 +171,8 @@ public class MainActivity extends AppCompatActivity{
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
+
+
 
 
 

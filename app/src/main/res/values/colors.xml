@@ -3,6 +3,11 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF2255</color>
+
+    <color name="colorPrimary1">#3F51B5</color>
+    <color name="colorPrimaryDark1">#303F9F</color>
+    <color name="colorAccent1">#FF4081</color>
+
     <color name="transparentwhite">#99ffffff</color>
     <color name="seekbar_bg">#77ffffff</color>
     <color name="seekbar_progress">#99000000</color>

@@ -200,6 +200,7 @@
                         android:layout_width="@dimen/dimen30"
                         android:layout_height="@dimen/dimen30"
                         android:src="@drawable/pause"
+                        android:id="@+id/pausebtn"
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"/>
                 </RelativeLayout>
