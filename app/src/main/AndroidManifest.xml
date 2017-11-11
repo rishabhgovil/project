@@ -20,6 +20,8 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
+
+        android:resizeableActivity="true"
         android:name=".AnalyticsApplication"
         android:allowBackup="true"
         android:icon="@mipmap/logo"
@@ -35,7 +37,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity"
+            android:supportsPictureInPicture="true">
+
+            <layout
+                android:defaultHeight="500dp"
+                android:gravity="top"
+                android:minWidth="300dp"
+                />
+
+        </activity>
+
+
 
         <service
             android:name=".service.SongPlayback"

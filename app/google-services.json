@@ -1,48 +1,42 @@
 {
   "project_info": {
-    "project_id": "musico-player",
-    "project_number": "234034585057",
-    "name": "Musico Player"
+    "project_number": "299933249480",
+    "firebase_url": "https://fir-demo-d80e9.firebaseio.com",
+    "project_id": "fir-demo-d80e9",
+    "storage_bucket": "fir-demo-d80e9.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:234034585057:android:fd480623b2b03635",
-        "client_id": "android:com.surajsararf.musicoplayer",
-        "client_type": 1,
+        "mobilesdk_app_id": "1:299933249480:android:ee0745f96d34bc0c",
         "android_client_info": {
-          "package_name": "com.surajsararf.musicoplayer",
-          "certificate_hash": []
+          "package_name": "com.surajsararf.musicoplayer"
         }
       },
-      "oauth_client": [],
-      "api_key": [],
+      "oauth_client": [
+        {
+          "client_id": "299933249480-odl95t8l4iuapfrq887klp9c1e5lmpn9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBofcRjTnTDqciBj0p-sEoztKuUszro1GM"
+        }
+      ],
       "services": {
         "analytics_service": {
-          "status": 2,
-          "analytics_property": {
-            "tracking_id": "UA-75154657-2"
-          }
-        },
-        "cloud_messaging_service": {
-          "status": 1,
-          "apns_config": []
+          "status": 1
         },
         "appinvite_service": {
           "status": 1,
           "other_platform_oauth_client": []
         },
-        "google_signin_service": {
-          "status": 1
-        },
         "ads_service": {
-          "status": 2,
-          "test_banner_ad_unit_id": "ca-app-pub-3940256099942544/6300978111",
-          "test_interstitial_ad_unit_id": "ca-app-pub-3940256099942544/1033173712"
+          "status": 2
         }
       }
     }
   ],
-  "client_info": [],
-  "ARTIFACT_VERSION": "1"
+  "configuration_version": "1"
 }

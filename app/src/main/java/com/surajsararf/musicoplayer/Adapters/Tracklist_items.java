@@ -18,7 +18,7 @@ import java.util.ArrayList;
 /**
  * Created by surajsararf on 17/2/16.
  */
-public class Tracklist_items extends RecyclerView.Adapter<Tracklist_items.MyViewHolder> {
+public class  Tracklist_items extends RecyclerView.Adapter<Tracklist_items.MyViewHolder> {
     private GetValues getValues;
     private Context context;
     private ArrayList<MediaItem> mItemsList;
@@ -69,4 +69,8 @@ public class Tracklist_items extends RecyclerView.Adapter<Tracklist_items.MyView
             isPlayImage= (ImageView) itemView.findViewById(R.id.isplay);
         }
     }
+
+    
+
+
 }
