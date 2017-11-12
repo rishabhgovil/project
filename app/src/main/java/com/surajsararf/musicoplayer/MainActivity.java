@@ -43,6 +43,11 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 import com.surajsararf.musicoplayer.Adapters.Tracklist_items;
 import com.surajsararf.musicoplayer.Custom.GetBlur;
@@ -183,6 +188,63 @@ public class MainActivity extends AppCompatActivity{
         if(isInPictureInPictureMode()){
             // in picture mode
         }
+
+
+
+
+        // Firebase Connection
+
+
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        DatabaseReference music = db.getReference("music");
+
+        DatabaseReference first = music.child("first");
+        first.child("songname").setValue("Quismat");
+        first.child("artist").setValue("Ammy Virk");
+        DatabaseReference second = music.child("second");
+        second.child("songname").setValue("Backbone");
+        second.child("artist").setValue("Hardy Sandhu");
+
+
+        music.push();
+
+        music.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
 
 
     }

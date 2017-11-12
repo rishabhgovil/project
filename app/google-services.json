@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "299933249480",
-    "firebase_url": "https://fir-demo-d80e9.firebaseio.com",
-    "project_id": "fir-demo-d80e9",
-    "storage_bucket": "fir-demo-d80e9.appspot.com"
+    "project_number": "858337993897",
+    "firebase_url": "https://musico-player-577c9.firebaseio.com",
+    "project_id": "musico-player-577c9",
+    "storage_bucket": "musico-player-577c9.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:299933249480:android:ee0745f96d34bc0c",
+        "mobilesdk_app_id": "1:858337993897:android:fd480623b2b03635",
         "android_client_info": {
           "package_name": "com.surajsararf.musicoplayer"
         }
       },
       "oauth_client": [
         {
-          "client_id": "299933249480-odl95t8l4iuapfrq887klp9c1e5lmpn9.apps.googleusercontent.com",
+          "client_id": "858337993897-994hi7msvmdv3tmldj0n25jb2mdqpsai.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBofcRjTnTDqciBj0p-sEoztKuUszro1GM"
+          "current_key": "AIzaSyC5gmRu22XHkT8mViQv7qokgSiVJpYXD8s"
         }
       ],
       "services": {
