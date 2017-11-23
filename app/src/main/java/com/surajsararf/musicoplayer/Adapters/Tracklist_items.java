@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.surajsararf.musicoplayer.Custom.GetValues;
 import com.surajsararf.musicoplayer.R;
 import com.surajsararf.musicoplayer.util.MediaItem;
@@ -19,8 +21,17 @@ import java.util.ArrayList;
  * Created by surajsararf on 17/2/16.
  */
 public class  Tracklist_items extends RecyclerView.Adapter<Tracklist_items.MyViewHolder> {
+
+
+
+    FirebaseDatabase db = FirebaseDatabase.getInstance();
+    DatabaseReference music = db.getReference("music");
+    DatabaseReference ghgh = music;
+
     private GetValues getValues;
     private Context context;
+    int i=0;
+    String artist=new String("hi");
     private ArrayList<MediaItem> mItemsList;
 
     public Tracklist_items(Context context,ArrayList<MediaItem> items){
@@ -37,9 +48,18 @@ public class  Tracklist_items extends RecyclerView.Adapter<Tracklist_items.MyVie
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
+
+        //DatabaseReference song = music.child("one");
+        //DatabaseReference ghgh = music.child("one").child("ghgh");
+        DatabaseReference n=music.child(Integer.toString(i));
+        i++;
         MediaItem detail=mItemsList.get(position);
         holder.SongName.setText(detail.getTitle());
         holder.ArtistAlbumName.setText(detail.getArtist() + " | " + detail.getAlbum());
+
+        n.child("name").setValue(detail.getTitle());
+        n.child("artist").setValue(detail.getArtist());
+
         if (PlayerConstants.mSongPlayback.isPlay){
             holder.isPlayImage.setImageResource(R.drawable.pause);
         }
@@ -54,6 +74,8 @@ public class  Tracklist_items extends RecyclerView.Adapter<Tracklist_items.MyVie
             holder.isPlayImage.setVisibility(View.VISIBLE);
         }
     }
+
+
 
     @Override
     public int getItemCount() {

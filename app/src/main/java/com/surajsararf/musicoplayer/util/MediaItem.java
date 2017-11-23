@@ -12,6 +12,7 @@ public class MediaItem {
 	long albumId;
 	Uri AlbumArtPath;
 
+
 	@Override
 	public String toString() {
 		return title;

@@ -29,6 +29,11 @@ import android.widget.ImageView;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 import com.surajsararf.musicoplayer.Custom.MediaStoreAccessHelper;
 import com.surajsararf.musicoplayer.FloatingViewService;
@@ -42,10 +47,13 @@ import com.surajsararf.musicoplayer.util.UtilFunctions;
 
 import java.io.FileDescriptor;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Map;
 
 
 public class SongPlayback extends Service {
 
+    public static final String TAG ="music genres";
 
     public static final int mNotificationId = 1180;
     public static final String NOTIFY_LaunchNowPlaying = "com.surajsararf.musicoplayer.launchnowplaying";
@@ -93,7 +101,68 @@ public class SongPlayback extends Service {
 
     @Override
     public void onCreate() {
+
+        DatabaseReference ref1= FirebaseDatabase.getInstance().getReference();
+        DatabaseReference ref2,ref3,ref4;
+        ref2 = ref1.child("music");
+
+
+        ref2.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+
+                ArrayList Userlist = new ArrayList<String>();
+
+
+                // Result will be holded Here
+                for (DataSnapshot dsp : dataSnapshot.getChildren()) {
+                    Userlist.add(String.valueOf(dsp.getValue()));
+                    Log.d(TAG, "onDataChange: "+dsp.getValue());
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                //handle databaseError
+            }
+        });
     }
+
+       /* DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("music");
+        ref.addListenerForSingleValueEvent(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        //Get map of users in datasnapshot
+                        getgenres((Map<String,Object>) dataSnapshot.getValue());
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        //handle databaseError
+                    }
+                });
+
+    }
+    private void getgenres(Map<String,Object> users) {
+
+        ArrayList<Long> genres = new ArrayList<>();
+
+        //iterate through each user, ignoring their UID
+        for (Map.Entry<String, Object> entry : users.entrySet()){
+
+            //Get user map
+            Map singleUser = (Map) entry.getValue();
+            //Get phone field and append to list
+            genres.add((Long) singleUser.get("genre"));
+        }
+
+      // System.out.println(genres.toString());
+        Log.d(TAG, "getgenres: "+ genres.toString());
+    } */
 
     @SuppressLint("NewApi")
     @Override

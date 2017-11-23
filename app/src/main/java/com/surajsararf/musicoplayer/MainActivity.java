@@ -195,15 +195,214 @@ public class MainActivity extends AppCompatActivity{
         // Firebase Connection
 
 
+
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         DatabaseReference music = db.getReference("music");
 
-        DatabaseReference first = music.child("first");
-        first.child("songname").setValue("Quismat");
-        first.child("artist").setValue("Ammy Virk");
-        DatabaseReference second = music.child("second");
-        second.child("songname").setValue("Backbone");
-        second.child("artist").setValue("Hardy Sandhu");
+        DatabaseReference zero = music.child("0");
+        zero.child("genre").setValue("happy");
+        zero.child("duration").setValue("500");
+
+        DatabaseReference one = music.child("1");
+        one.child("genre").setValue("happy");
+        one.child("duration").setValue("478");
+
+        DatabaseReference two = music.child("2");
+        two.child("genre").setValue("sad");
+        two.child("duration").setValue("512");
+
+        DatabaseReference three = music.child("3");
+        three.child("genre").setValue("neutral");
+        three.child("duration").setValue("450");
+
+        DatabaseReference four = music.child("4");
+        four.child("genre").setValue("neutral");
+        four.child("duration").setValue("452");
+
+        DatabaseReference five = music.child("5");
+        five.child("genre").setValue("happy");
+        five.child("duration").setValue("462");
+
+        DatabaseReference six = music.child("6");
+        six.child("genre").setValue("suprise");
+        six.child("duration").setValue("465");
+
+        DatabaseReference seven = music.child("7");
+        seven.child("genre").setValue("suprise");
+        seven.child("duration").setValue("469");
+
+        DatabaseReference eight = music.child("8");
+        eight.child("genre").setValue("neutral");
+        eight.child("duration").setValue("472");
+
+        DatabaseReference nine = music.child("9");
+        nine.child("genre").setValue("sad");
+        nine.child("duration").setValue("479");
+
+        DatabaseReference ten = music.child("10");
+        ten.child("genre").setValue("happy");
+        ten.child("duration").setValue("412");
+
+        DatabaseReference eleven = music.child("11");
+        eleven.child("genre").setValue("happy");
+        eleven.child("duration").setValue("415");
+
+        DatabaseReference twelve = music.child("12");
+        twelve.child("genre").setValue("sad");
+        twelve.child("duration").setValue("420");
+
+        DatabaseReference thirteen = music.child("13");
+        thirteen.child("genre").setValue("suprise");
+        thirteen.child("duration").setValue("422");
+
+        DatabaseReference fourteen = music.child("14");
+        fourteen.child("genre").setValue("neutral");
+        fourteen.child("duration").setValue("422");
+
+        DatabaseReference fifteen = music.child("15");
+        fifteen.child("genre").setValue("neutral");
+        fifteen.child("duration").setValue("463");
+
+        DatabaseReference sixteen = music.child("16");
+        sixteen.child("genre").setValue("sad");
+        sixteen.child("duration").setValue("456");
+
+        DatabaseReference seventeen = music.child("17");
+        seventeen.child("genre").setValue("happy");
+        seventeen.child("duration").setValue("300");
+
+        DatabaseReference eighteen = music.child("18");
+        eighteen.child("genre").setValue("happy");
+        eighteen.child("duration").setValue("312");
+
+        DatabaseReference nineteen = music.child("19");
+        nineteen.child("genre").setValue("disgust");
+        nineteen.child("duration").setValue("296");
+
+        DatabaseReference twenty = music.child("20");
+        twenty.child("genre").setValue("fear");
+        twenty.child("duration").setValue("289");
+
+        DatabaseReference twentyone = music.child("21");
+        twentyone.child("genre").setValue("fear");
+        twentyone.child("duration").setValue("290");
+
+        DatabaseReference twentytwo = music.child("22");
+        twentytwo.child("genre").setValue("suprise");
+        twentytwo.child("duration").setValue("275");
+
+        DatabaseReference twentythree = music.child("23");
+        twentythree.child("genre").setValue("neutral");
+        twentythree.child("duration").setValue("230");
+
+        DatabaseReference twentyfour = music.child("24");
+        twentyfour.child("genre").setValue("sad");
+        twentyfour.child("duration").setValue("245");
+
+        DatabaseReference twentyfive = music.child("25");
+        twentyfive.child("genre").setValue("happy");
+        twentyfive.child("duration").setValue("168");
+
+        DatabaseReference twentysix = music.child("26");
+        twentysix.child("genre").setValue("sad");
+        twentysix.child("duration").setValue("275");
+
+        DatabaseReference twentyseven = music.child("27");
+        twentyseven.child("genre").setValue("suprise");
+        twentyseven.child("duration").setValue("287");
+
+        DatabaseReference twentyeight = music.child("28");
+        twentyeight.child("genre").setValue("fear");
+        twentyeight.child("duration").setValue("187");
+
+        DatabaseReference twentynine = music.child("29");
+        twentynine.child("genre").setValue("disgust");
+        twentynine.child("duration").setValue("190");
+
+        DatabaseReference thirty = music.child("30");
+        thirty.child("genre").setValue("neutral");
+        thirty.child("duration").setValue("194");
+
+
+        DatabaseReference thirtyone = music.child("31");
+        thirtyone.child("genre").setValue("neutral");
+        thirtyone.child("duration").setValue("187");
+
+        DatabaseReference thirtytwo = music.child("32");
+        thirtytwo.child("genre").setValue("happy");
+        thirtytwo.child("duration").setValue("188");
+
+        DatabaseReference thirtythree = music.child("33");
+        thirtythree.child("genre").setValue("happy");
+        thirtythree.child("duration").setValue("200");
+
+        DatabaseReference thirtyfour = music.child("34");
+        thirtyfour.child("genre").setValue("neutral");
+        thirtyfour.child("duration").setValue("215");
+
+        DatabaseReference thirtyfive = music.child("35");
+        thirtyfive.child("genre").setValue("fear");
+        thirtyfive.child("duration").setValue("220");
+
+        DatabaseReference thirtysix = music.child("36");
+        thirtysix.child("genre").setValue("happy");
+        thirtysix.child("duration").setValue("221");
+
+        DatabaseReference thirtyseven = music.child("37");
+        thirtyseven.child("genre").setValue("disgust");
+        thirtyseven.child("duration").setValue("225");
+
+        DatabaseReference thirtyeight = music.child("38");
+        thirtyeight.child("genre").setValue("suprise");
+        thirtyeight.child("duration").setValue("178");
+
+        DatabaseReference thirtynine = music.child("39");
+        thirtynine.child("genre").setValue("neutral");
+        thirtynine.child("duration").setValue("193");
+
+        DatabaseReference forty = music.child("40");
+        forty.child("genre").setValue("happy");
+        forty.child("duration").setValue("201");
+
+        DatabaseReference fortyone = music.child("41");
+        fortyone.child("genre").setValue("sad");
+        fortyone.child("duration").setValue("214");
+
+        DatabaseReference fortytwo = music.child("42");
+        fortytwo.child("genre").setValue("happy");
+        fortytwo.child("duration").setValue("216");
+
+        DatabaseReference fortythree = music.child("43");
+        fortythree.child("genre").setValue("sad");
+        fortythree.child("duration").setValue("223");
+
+        DatabaseReference fortyfour = music.child("44");
+        fortyfour.child("genre").setValue("neutral");
+        fortyfour.child("duration").setValue("229");
+
+        DatabaseReference fortyfive = music.child("45");
+        fortyfive.child("genre").setValue("disgust");
+        fortyfive.child("duration").setValue("231");
+
+        DatabaseReference fortysix = music.child("46");
+        fortysix.child("genre").setValue("fear");
+        fortysix.child("duration").setValue("323");
+
+        DatabaseReference fortyseven = music.child("47");
+        fortyseven.child("genre").setValue("angry");
+        fortyseven.child("duration").setValue("333");
+
+        DatabaseReference fortyeight = music.child("48");
+        fortyeight.child("genre").setValue("neutral");
+        fortyeight.child("duration").setValue("189");
+
+        DatabaseReference fortynine = music.child("49");
+        fortynine.child("genre").setValue("angry");
+        fortynine.child("duration").setValue("199");
+
+        DatabaseReference fifty = music.child("50");
+        fifty.child("genre").setValue("angry");
+        fifty.child("duration").setValue("160");
 
 
         music.push();
@@ -234,9 +433,6 @@ public class MainActivity extends AppCompatActivity{
 
             }
         });
-
-
-
 
 
 
@@ -590,7 +786,16 @@ public class MainActivity extends AppCompatActivity{
     private void SetupRecyclerView(){
         mRecyclerView.setHasFixedSize(true);
         mFastScroller.setRecyclerView(mRecyclerView);
+
+
+
+
         mRecyclerView.setOnScrollListener(mFastScroller.getOnScrollListener());
+
+
+
+
+
         setRecyclerViewLayoutManager(mRecyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         ArrayList<MediaItem> mediaItems=PlayerConstants.SONGS_LIST;
@@ -753,6 +958,7 @@ public class MainActivity extends AppCompatActivity{
                             String artist = PlayerConstants.SONGS_LIST.get(PlayerConstants.SONG_NUMBER).getArtist();
                             String album = PlayerConstants.SONGS_LIST.get(PlayerConstants.SONG_NUMBER).getAlbum();
                             long TotalDuration = PlayerConstants.SONGS_LIST.get(PlayerConstants.SONG_NUMBER).getDuration();
+
                             mMiniSongName.setText(songName);
                             mSongName.setText(songName);
                             mMiniArtistAlbum.setText(artist + " | " + album);
