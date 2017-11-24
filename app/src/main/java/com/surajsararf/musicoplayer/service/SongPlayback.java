@@ -129,40 +129,28 @@ public class SongPlayback extends Service {
                 //handle databaseError
             }
         });
+
+        ref3 = ref1.child("business").child("mood");
+        ref3.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String mood  = dataSnapshot.getValue(String.class);
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+
     }
 
-       /* DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("music");
-        ref.addListenerForSingleValueEvent(
-                new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        //Get map of users in datasnapshot
-                        getgenres((Map<String,Object>) dataSnapshot.getValue());
-                    }
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                        //handle databaseError
-                    }
-                });
-
-    }
-    private void getgenres(Map<String,Object> users) {
-
-        ArrayList<Long> genres = new ArrayList<>();
-
-        //iterate through each user, ignoring their UID
-        for (Map.Entry<String, Object> entry : users.entrySet()){
-
-            //Get user map
-            Map singleUser = (Map) entry.getValue();
-            //Get phone field and append to list
-            genres.add((Long) singleUser.get("genre"));
-        }
-
-      // System.out.println(genres.toString());
-        Log.d(TAG, "getgenres: "+ genres.toString());
-    } */
 
     @SuppressLint("NewApi")
     @Override
