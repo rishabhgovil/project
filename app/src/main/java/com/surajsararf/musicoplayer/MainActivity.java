@@ -28,7 +28,6 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -85,6 +84,7 @@ public class MainActivity extends AppCompatActivity{
     private final static int mToolbarAnimationAlphaDuration=300;
 
     public final static int forNextKey=0;
+    MediaPlayer mp;
     public final static int forPreviousKey=1;
     public final static int forSkipTrack=2;
     public final static int forNothingKey=3;
@@ -121,6 +121,8 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mp = new MediaPlayer();
+
         equal=(FloatingActionButton)findViewById(R.id.equal);
 
         // floating permission
@@ -150,6 +152,8 @@ public class MainActivity extends AppCompatActivity{
 
 
         mHandler=new Handler();
+        mp = MediaPlayer.create(this,R.raw.hardwell);
+        mp.start();
         mContext =this;
         activity=this;
         picasso =Picasso.with(mContext);
@@ -703,7 +707,10 @@ public class MainActivity extends AppCompatActivity{
             if (RunServiceIfnot(SongPlayback.isPlayFromMainTrue,MainActivity.forNothingKey,0)) {
                 PlayerConstants.mSongPlayback.startPlayback();
             }
+            mp.stop();
+            mp.release();
             changeButton();
+
         }
     };
 

@@ -1,6 +1,7 @@
 package com.surajsararf.musicoplayer.Adapters;
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import com.surajsararf.musicoplayer.R;
 import com.surajsararf.musicoplayer.util.MediaItem;
 import com.surajsararf.musicoplayer.util.PlayerConstants;
 
+import java.net.URI;
 import java.util.ArrayList;
 
 /**
@@ -30,9 +32,10 @@ public class  Tracklist_items extends RecyclerView.Adapter<Tracklist_items.MyVie
 
     private GetValues getValues;
     private Context context;
+    public static Uri uri=null;
     int i=0;
     String artist=new String("hi");
-    private ArrayList<MediaItem> mItemsList;
+    public static ArrayList<MediaItem> mItemsList;
 
     public Tracklist_items(Context context,ArrayList<MediaItem> items){
         getValues=new GetValues(context);
@@ -55,6 +58,7 @@ public class  Tracklist_items extends RecyclerView.Adapter<Tracklist_items.MyVie
         i++;*/
         MediaItem detail=mItemsList.get(position);
         holder.SongName.setText(detail.getTitle());
+        uri = detail.getAlbumArtPath();
         holder.ArtistAlbumName.setText(detail.getArtist() + " | " + detail.getAlbum());
 /*
         n.child("name").setValue(detail.getTitle());

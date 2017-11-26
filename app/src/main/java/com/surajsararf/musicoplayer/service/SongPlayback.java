@@ -35,6 +35,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+import com.surajsararf.musicoplayer.Adapters.Tracklist_items;
 import com.surajsararf.musicoplayer.Custom.MediaStoreAccessHelper;
 import com.surajsararf.musicoplayer.FloatingViewService;
 import com.surajsararf.musicoplayer.MainActivity;
@@ -49,13 +50,18 @@ import java.io.FileDescriptor;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
+import java.util.ListIterator;
 import java.util.Map;
 
 
 public class SongPlayback extends Service {
 
     public static final String TAG ="music genres";
+    Uri urisong = null;
+    Iterator<MediaItem> litr = null;
     String mood;
+    int i =0;
     ArrayList ar= null;
     Integer max = 0;
     public static final int mNotificationId = 1180;
@@ -69,7 +75,7 @@ public class SongPlayback extends Service {
     public static final String isStartFromMain="isStartFromMain";
     public static final String isPlayFromMain="isPlayFromMain";
     public static final String RestartServiceAction="RestartServiceAction";
-
+    public static String songname = null;
     public static final int isPlayFromMainFalse=0;
     public static final int isPlayFromMainTrue=1;
 
@@ -84,6 +90,7 @@ public class SongPlayback extends Service {
     private Handler mHandler;
     private boolean mMediaPlayerPrepared = false;
     private boolean mMediaPlayer2Prepared = false;
+    public static MediaPlayer mp;
     private int mCrossfadeDuration;
 
     private float mFadeOutVolume = 0f;
@@ -104,6 +111,8 @@ public class SongPlayback extends Service {
 
     @Override
     public void onCreate() {
+
+        mp = new MediaPlayer();
 
         DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference();
         DatabaseReference ref2,ref3,ref4;
@@ -164,24 +173,46 @@ public class SongPlayback extends Service {
                         Log.d(TAG, "onDataChange: mood is happy");
 
                         if (max < Integer.parseInt(dsp.child("duration").getValue(String.class))) {
+
                             max = Integer.parseInt(dsp.child("duration").getValue(String.class));
+                            songname = dsp.child("name").getValue(String.class);
+                            urisong = Tracklist_items.uri;
                         }
                         Log.d(TAG, "onDataChange: " + Integer.parseInt(dsp.child("duration").getValue(String.class)));
-
                         break;
 
                     }
                 }
-                Log.d(TAG, "onDataChange: "+max);
 
-            }
+                Log.i(TAG, "onDataChange: "+max);
+                Log.i(TAG, "onDataChange: "+songname);
+                Log.i(TAG, "onDataChange: "+urisong);
+
+                }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Log.w(TAG, "getUser:onCancelled", databaseError.toException());
             }
         });
 
+        mp.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        try {
+            mp.setDataSource(getApplicationContext(),urisong);
+            mp.prepareAsync();
+            Log.d(TAG, "onCreate: preparing");
+            mp.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                @Override
+                public void onPrepared(MediaPlayer mMediaPlayer1) {
+                    Log.d(TAG, "onPrepared: Prepared");
+                    mMediaPlayer1.start();
+                }
+            });
+        } catch (Exception e) {
+            Log.d(TAG, "onCreate: Exception mediaplayer");
+            e.printStackTrace();
 
+        }
 
     }
 
