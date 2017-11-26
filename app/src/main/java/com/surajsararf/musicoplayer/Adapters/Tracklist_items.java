@@ -51,14 +51,14 @@ public class  Tracklist_items extends RecyclerView.Adapter<Tracklist_items.MyVie
 
         //DatabaseReference song = music.child("one");
         //DatabaseReference ghgh = music.child("one").child("ghgh");
-        DatabaseReference n=music.child(Integer.toString(i));
-        i++;
+       /* DatabaseReference n=music.child(Integer.toString(i));
+        i++;*/
         MediaItem detail=mItemsList.get(position);
         holder.SongName.setText(detail.getTitle());
         holder.ArtistAlbumName.setText(detail.getArtist() + " | " + detail.getAlbum());
-
+/*
         n.child("name").setValue(detail.getTitle());
-        n.child("artist").setValue(detail.getArtist());
+        n.child("artist").setValue(detail.getArtist());*/
 
         if (PlayerConstants.mSongPlayback.isPlay){
             holder.isPlayImage.setImageResource(R.drawable.pause);

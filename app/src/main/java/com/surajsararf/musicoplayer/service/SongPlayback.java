@@ -48,13 +48,16 @@ import com.surajsararf.musicoplayer.util.UtilFunctions;
 import java.io.FileDescriptor;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Map;
 
 
 public class SongPlayback extends Service {
 
     public static final String TAG ="music genres";
-
+    String mood;
+    ArrayList ar= null;
+    Integer max = 0;
     public static final int mNotificationId = 1180;
     public static final String NOTIFY_LaunchNowPlaying = "com.surajsararf.musicoplayer.launchnowplaying";
     public static final String NOTIFY_PREVIOUS = "com.surajsararf.musicoplayer.previous";
@@ -102,9 +105,12 @@ public class SongPlayback extends Service {
     @Override
     public void onCreate() {
 
-        DatabaseReference ref1= FirebaseDatabase.getInstance().getReference();
+        DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference();
         DatabaseReference ref2,ref3,ref4;
+        //DatabaseReference ref4 = FirebaseDatabase.getInstance().getReference("businesses");
         ref2 = ref1.child("music");
+        ref3 = ref1.child("businesses");
+        ref4 = ref1.child("music");
 
 
         ref2.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -130,11 +136,16 @@ public class SongPlayback extends Service {
             }
         });
 
-        ref3 = ref1.child("business").child("mood");
         ref3.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String mood  = dataSnapshot.getValue(String.class);
+                for (DataSnapshot dsp : dataSnapshot.getChildren()) {
+                   // String mood = String.valueOf(dsp.getValue());
+                    mood = dsp.child("mood").getValue(String.class);
+                    //Toast.makeText(SongPlayback)
+                    Log.d(TAG, "onDataChangemood: "+ mood);
+                }
+
 
 
             }
@@ -145,6 +156,30 @@ public class SongPlayback extends Service {
             }
         });
 
+        ref4.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot dsp : dataSnapshot.getChildren()) {
+                    while (dsp.child("genre").getValue(String.class)!=null && dsp.child("genre").getValue(String.class).equals("happy")) {
+                        Log.d(TAG, "onDataChange: mood is happy");
+
+                        if (max < Integer.parseInt(dsp.child("duration").getValue(String.class))) {
+                            max = Integer.parseInt(dsp.child("duration").getValue(String.class));
+                        }
+                        Log.d(TAG, "onDataChange: " + Integer.parseInt(dsp.child("duration").getValue(String.class)));
+
+                        break;
+
+                    }
+                }
+                Log.d(TAG, "onDataChange: "+max);
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w(TAG, "getUser:onCancelled", databaseError.toException());
+            }
+        });
 
 
 
