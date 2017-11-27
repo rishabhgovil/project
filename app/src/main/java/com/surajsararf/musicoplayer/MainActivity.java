@@ -64,6 +64,8 @@ import java.util.ArrayList;
 
 import xyz.danoz.recyclerviewfastscroller.vertical.VerticalRecyclerViewFastScroller;
 
+import static com.surajsararf.musicoplayer.service.SongPlayback.mp;
+
 public class MainActivity extends AppCompatActivity{
 
 
@@ -84,7 +86,7 @@ public class MainActivity extends AppCompatActivity{
     private final static int mToolbarAnimationAlphaDuration=300;
 
     public final static int forNextKey=0;
-    MediaPlayer mp;
+     // MediaPlayer mp;
     public final static int forPreviousKey=1;
     public final static int forSkipTrack=2;
     public final static int forNothingKey=3;
@@ -120,8 +122,11 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//
+//        Intent service = new Intent(this,SongPlayback.class);
+//        startService(service);
 
-        mp = new MediaPlayer();
+       //  mp = new MediaPlayer();
 
         equal=(FloatingActionButton)findViewById(R.id.equal);
 
@@ -152,8 +157,8 @@ public class MainActivity extends AppCompatActivity{
 
 
         mHandler=new Handler();
-        mp = MediaPlayer.create(this,R.raw.hardwell);
-        mp.start();
+       /* mp = MediaPlayer.create(this,R.raw.hardwell);
+        mp.start();*/
         mContext =this;
         activity=this;
         picasso =Picasso.with(mContext);
@@ -707,6 +712,7 @@ public class MainActivity extends AppCompatActivity{
             if (RunServiceIfnot(SongPlayback.isPlayFromMainTrue,MainActivity.forNothingKey,0)) {
                 PlayerConstants.mSongPlayback.startPlayback();
             }
+
             mp.stop();
             mp.release();
             changeButton();

@@ -3,6 +3,7 @@ package com.surajsararf.musicoplayer.Adapters;
 import android.content.Context;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +33,8 @@ public class  Tracklist_items extends RecyclerView.Adapter<Tracklist_items.MyVie
 
     private GetValues getValues;
     private Context context;
-    public static Uri uri=null;
+    public static String uri=null;
+    public static final String TAG ="hello";
     int i=0;
     String artist=new String("hi");
     public static ArrayList<MediaItem> mItemsList;
@@ -52,18 +54,22 @@ public class  Tracklist_items extends RecyclerView.Adapter<Tracklist_items.MyVie
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
-        //DatabaseReference song = music.child("one");
-        //DatabaseReference ghgh = music.child("one").child("ghgh");
-       /* DatabaseReference n=music.child(Integer.toString(i));
+       /* DatabaseReference song = music.child("one");
+        DatabaseReference ghgh = music.child("one").child("ghgh");
+        DatabaseReference n=music.child(Integer.toString(i));
         i++;*/
         MediaItem detail=mItemsList.get(position);
-        holder.SongName.setText(detail.getTitle());
-        uri = detail.getAlbumArtPath();
-        holder.ArtistAlbumName.setText(detail.getArtist() + " | " + detail.getAlbum());
-/*
-        n.child("name").setValue(detail.getTitle());
-        n.child("artist").setValue(detail.getArtist());*/
 
+        holder.SongName.setText(detail.getTitle());
+        uri = detail.getFilepath();
+        holder.ArtistAlbumName.setText(detail.getArtist() + " | " + detail.getAlbum());
+        Log.d(TAG, "onBindViewHolder: "+holder.SongName);
+        Log.d(TAG, "onBindViewHolder: "+uri);
+        Log.d(TAG, "onBindViewHolder: "+holder.ArtistAlbumName);
+
+      /*  n.child("name").setValue(detail.getTitle());
+        n.child("artist").setValue(detail.getArtist());
+*/
         if (PlayerConstants.mSongPlayback.isPlay){
             holder.isPlayImage.setImageResource(R.drawable.pause);
         }

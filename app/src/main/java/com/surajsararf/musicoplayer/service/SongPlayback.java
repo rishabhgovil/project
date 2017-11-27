@@ -57,8 +57,10 @@ import java.util.Map;
 
 public class SongPlayback extends Service {
 
+    OnGetResponse onget;
+
     public static final String TAG ="music genres";
-    Uri urisong = null;
+    String urisong = null;
     Iterator<MediaItem> litr = null;
     String mood;
     int i =0;
@@ -149,7 +151,7 @@ public class SongPlayback extends Service {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot dsp : dataSnapshot.getChildren()) {
-                   // String mood = String.valueOf(dsp.getValue());
+                    // String mood = String.valueOf(dsp.getValue());
                     mood = dsp.child("mood").getValue(String.class);
                     //Toast.makeText(SongPlayback)
                     Log.d(TAG, "onDataChangemood: "+ mood);
@@ -169,50 +171,64 @@ public class SongPlayback extends Service {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot dsp : dataSnapshot.getChildren()) {
-                    while (dsp.child("genre").getValue(String.class)!=null && dsp.child("genre").getValue(String.class).equals("happy")) {
-                        Log.d(TAG, "onDataChange: mood is happy");
+                    while (dsp.child("genre").getValue(String.class)!=null && dsp.child("genre").getValue(String.class).equals(mood)) {
+                        Log.d(TAG, "onDataChange: mood is");
 
                         if (max < Integer.parseInt(dsp.child("duration").getValue(String.class))) {
 
                             max = Integer.parseInt(dsp.child("duration").getValue(String.class));
                             songname = dsp.child("name").getValue(String.class);
                             urisong = Tracklist_items.uri;
+                            Log.d(TAG, "onDataChangeuri: "+urisong);
+
                         }
                         Log.d(TAG, "onDataChange: " + Integer.parseInt(dsp.child("duration").getValue(String.class)));
                         break;
 
                     }
                 }
-
                 Log.i(TAG, "onDataChange: "+max);
                 Log.i(TAG, "onDataChange: "+songname);
-                Log.i(TAG, "onDataChange: "+urisong);
+                Log.i(TAG, "onDataChange: + CheckURI"+urisong);
+                onget.onSuccess();
 
-                }
+
+
+            }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Log.w(TAG, "getUser:onCancelled", databaseError.toException());
             }
+
         });
 
-        mp.setAudioStreamType(AudioManager.STREAM_MUSIC);
-        try {
-            mp.setDataSource(getApplicationContext(),urisong);
-            mp.prepareAsync();
-            Log.d(TAG, "onCreate: preparing");
-            mp.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                @Override
-                public void onPrepared(MediaPlayer mMediaPlayer1) {
-                    Log.d(TAG, "onPrepared: Prepared");
-                    mMediaPlayer1.start();
-                }
-            });
-        } catch (Exception e) {
-            Log.d(TAG, "onCreate: Exception mediaplayer");
-            e.printStackTrace();
 
-        }
+        onget = new OnGetResponse() {
+            @Override
+            public void onSuccess() {
+
+                try {
+                    Log.i(TAG, "CheckURI: "+urisong);
+                    mp.setDataSource(getApplicationContext(),Uri.parse(urisong));
+                    mp.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                    mp.prepare();
+                    Log.d(TAG, "onCreate: preparing");
+                    /*mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                        @Override
+                        public void onPrepared(MediaPlayer mMediaPlayer1) {
+                            Log.d(TAG, "onPrepared: Prepared");
+                            mMediaPlayer1.start();
+                        }
+                    });*/
+                } catch (Exception e) {
+                    Log.d(TAG, "onCreate: Exception mediaplayer");
+                    e.printStackTrace();
+
+                }
+                mp.start();
+            }
+        };
 
     }
 
